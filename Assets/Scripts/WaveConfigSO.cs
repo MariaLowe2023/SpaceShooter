@@ -16,7 +16,6 @@ public class WaveConfigSO : ScriptableObject
 
     public Transform GetStartingWaypoint()
     {
-        // get thr first child from the pathPrefab that was created in Unity        
         return pathPrefab.GetChild(0);
     }
 
