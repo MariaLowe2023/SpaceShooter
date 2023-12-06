@@ -7,36 +7,30 @@ using UnityEngine;
 public class WaveConfigSO : ScriptableObject
 {
     [SerializeField] List<GameObject> enemyPrefab;
-    [SerializeField] Transform pathPrefab; //contains the waypoints made in Unity
+    [SerializeField] Transform pathPrefab;
     [SerializeField] float moveSpeed = 1f;
 
     [SerializeField] float timeBetweenEnemySpawns = 1f;
     [SerializeField] float spawnTimeVariance = 0f;
     [SerializeField] float minimumSpawnTime = 0.2f;
 
-    public Transform GetStartingWaypoint() //the starting point of the path is the first child
+    public Transform GetStartingWaypoint()
     {
         // get thr first child from the pathPrefab that was created in Unity        
         return pathPrefab.GetChild(0);
     }
 
-    public List<Transform> GetWaypoints() //we want to get all of the waypoints
-                                          //this creates a list of all the Transform's
+    public List<Transform> GetWaypoints()
     {
-        List<Transform> waypoints = new List<Transform>(); //create a new List of Transforms
-        foreach (Transform child in pathPrefab) //loop through all of the children
-                                                //for each child in my pathprefab
-                                                //add the child to the list created "waypoints" 
-                                                //for EVERY child in the pathprefab we do this!!!
+        List<Transform> waypoints = new List<Transform>();
+        foreach (Transform child in pathPrefab)
         {
-            waypoints.Add(child); //we are going to add a child to the List created before "waypoints"
-                                  //we add children instead of values for flexibility, 
+            waypoints.Add(child);
         }
-        return waypoints; //when thats all done and we've gone through all the children
-                          //we're going to return our list == basically tell me whats in the list
+        return waypoints;
     }
 
-    public float GetMoveSpeed() //this exists so that we can script the movespeed in different scripts
+    public float GetMoveSpeed()
     {
         return moveSpeed;
     }
